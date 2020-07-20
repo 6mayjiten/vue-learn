@@ -1,4 +1,4 @@
-# e-commerce-front-end
+# e-commerce-front-end (Vue.js)
 
 ## Project setup
 ```

@@ -19,6 +19,7 @@
         "vue": "^2.6.11",
         "vue-router": "^3.3.4",
         "vue-server-renderer": "^2.6.11",
+        "vuetify": "^2.3.4",
         "vuex": "^3.5.1",
         "vuex-persistedstate": "^3.0.1",
         "vuex-router-sync": "^5.0.0"
@@ -45,10 +46,26 @@
             "parser": "babel-eslint"
         },
         "rules": {
-            "quotes": [
-                "error",
-                "single"
-            ]
+            "quotes": ["error","single"],
+            "object-property-newline": ["error", { "allowAllPropertiesOnSameLine": true }],
+            "vue/html-indent": ["error", "tab", {
+                "attribute": 1,
+                "baseIndent": 1,
+                "closeBracket": 0,
+                "alignAttributesVertically": true,
+                "ignores": []
+            }],
+            "vue/html-closing-bracket-newline": ["error", {
+                "singleline": "never",
+                "multiline": "never"
+            }],
+            "vue/max-attributes-per-line": ["error", {
+                "singleline": 5,
+                "multiline": {
+                    "max": 5,
+                    "allowFirstLine": true
+                }
+            }]
         }
     },
     "browserslist": [

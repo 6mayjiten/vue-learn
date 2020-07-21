@@ -1,20 +1,17 @@
 <template>
-  <div id="app">
-    <img
-      alt="Vue logo"
-      src="../../assets/logo.png"
-    >
-    <HelloWorld msg="This is message" />
-  </div>
+	<div id="app">
+		<img alt="Vue logo" src="../../assets/logo.png">
+		<HelloWorld msg="This is message" />
+	</div>
 </template>
 
 <script>
-    import HelloWorld from '@/components/home/HelloWorld';
-    export default {
-        components: {
-            HelloWorld
-        }
-    }
+import HelloWorld from '@/components/home/HelloWorld';
+export default {
+	components: {
+		HelloWorld,
+	}
+}
 </script>
 
 <style>

@@ -25,4 +25,12 @@ $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
 
+// link styles
+$navbar-item-active-color: $pink;
+
 @import "~bulma/bulma.sass";
+
+.router-link-active.router-link-exact-active {
+  color: $navbar-item-active-color;
+  font-weight: bold;
+}

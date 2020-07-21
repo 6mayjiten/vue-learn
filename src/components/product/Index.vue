@@ -1,13 +1,13 @@
 <template>
-  <div>
-    Product Details
-  </div>
+	<div>
+		Product Details
+	</div>
 </template>
 
 <script>
-    export default {
-        name: 'Product',
-    }
+export default {
+	name: 'Product'
+}
 </script>
 
 <style scoped>

@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
 /dist
-/src/assets/sass/.sass-cache
+/src/assets/sass/.sass-cache/
 
 # local env files
 .env.local

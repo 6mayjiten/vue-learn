@@ -1,15 +1,15 @@
 <template>
-  <div>
-    <Header />
-    <router-view />
-  </div>
+	<div>
+		<Header />
+		<router-view />
+	</div>
 </template>
 
 <script>
 
-    import Header from '@/components/common/Header';
-    export default {
-            components: {Header}
-    }
+import Header from '@/components/common/Header';
+export default {
+	components: {Header}
+}
 
 </script>

@@ -13,6 +13,8 @@
         "core-js": "^3.6.5",
         "es6-promise": "^4.2.8",
         "lodash": "^4.17.19",
+        "node-sass": "^4.14.1",
+        "sass-loader": "^9.0.2",
         "vee-validate": "^3.3.7",
         "vue": "^2.6.11",
         "vue-router": "^3.3.4",
@@ -43,7 +45,10 @@
             "parser": "babel-eslint"
         },
         "rules": {
-            "quotes": ["error", "single"]
+            "quotes": [
+                "error",
+                "single"
+            ]
         }
     },
     "browserslist": [

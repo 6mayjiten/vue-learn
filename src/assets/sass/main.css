@@ -1,21 +1,21 @@
 /*
 Error: File to import not found or unreadable: ~bulma/bulma.sass.
-        on line 31 of main.scss
+        on line 44 of main.scss
 
-26: $input-shadow: none;
-27: 
-28: // link styles
-29: $navbar-item-active-color: $pink;
-30: 
-31: @import "~bulma/bulma.sass";
-32: 
-33: .router-link-active.router-link-exact-active {
-34:   color: $navbar-item-active-color;
-35:   font-weight: bold;
-36: }
+39: // link styles
+40: $navbar-item-active-color: $pink;
+41: $navbar-item-focus-color: $pink;
+42: $navbar-item-color: $black;
+43: 
+44: @import "~bulma/bulma.sass";
+45: 
+46: // for fonts scss
+47: .icon {
+48:     .fa {
+49:         color: $black;
 
 Backtrace:
-main.scss:31
+main.scss:44
 /Users/jitenshahi/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/import_node.rb:67:in `rescue in import'
 /Users/jitenshahi/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/import_node.rb:44:in `import'
 /Users/jitenshahi/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/import_node.rb:28:in `imported_file'
@@ -53,4 +53,4 @@ main.scss:31
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: ~bulma/bulma.sass.\A         on line 31 of main.scss\A \A 26: $input-shadow: none;\A 27: \A 28: // link styles\A 29: $navbar-item-active-color: $pink;\A 30: \A 31: @import \"~bulma/bulma.sass\";\A 32: \A 33: .router-link-active.router-link-exact-active {\A 34:   color: $navbar-item-active-color;\A 35:   font-weight: bold;\A 36: }"; }
+  content: "Error: File to import not found or unreadable: ~bulma/bulma.sass.\A         on line 44 of main.scss\A \A 39: // link styles\A 40: $navbar-item-active-color: $pink;\A 41: $navbar-item-focus-color: $pink;\A 42: $navbar-item-color: $black;\A 43: \A 44: @import \"~bulma/bulma.sass\";\A 45: \A 46: // for fonts scss\A 47: .icon {\A 48:     .fa {\A 49:         color: $black;"; }

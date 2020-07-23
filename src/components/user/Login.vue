@@ -24,9 +24,6 @@
 						'password',
 						{ rules: [
 							{ required: true, message: 'Please input your Password!' },
-							{ type: 'string', pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
-								message: 'Password at least 8 char long and must contain at least 1 digit, 1 lower case and 1 upper ' +
-									'case letter with 1 special char(!@#$%^&*)'}
 						] },
 					]"
 					type="password"

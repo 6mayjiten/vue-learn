@@ -1,7 +1,7 @@
 <template>
-	<nav class="navbar" role="navigation" aria-label="main navigation">
+	<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
 		<div class="navbar-brand">
-			<a class="navbar-item" href="https://bulma.io">
+			<a class="navbar-item" href="/">
 				<img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
 			</a>
 
@@ -12,51 +12,83 @@
 				<span aria-hidden="true" />
 			</a>
 		</div>
-
 		<div :class="{'navbar-menu':true, 'is-active':showNav}">
-			<div class="navbar-start">
+			<div class="navbar-end">
 				<router-link class="navbar-item" to="/">
-					Home
+					<span class="icon mr-1">
+						<i class="fa fa-home fa-lg" />
+					</span>Home
 				</router-link>
 
 				<router-link class="navbar-item" to="/collection">
-					Products
+					<span class="icon mr-1">
+						<i class="fa fa-cube fa-lg" />
+					</span>Products
 				</router-link>
 			</div>
 
-			<div v-if="!isLoggedIn && !token" class="navbar-end">
+			<div class="navbar-end mr-6">
 				<div class="navbar-item">
-					<div class="buttons">
-						<router-link class="button is-primary" to="/login">
-							<strong>Sign up</strong>
-						</router-link>
-						<router-link class="button is-light" to="/signup">
-							Log in
-						</router-link>
+					<div class="container">
+						<a v-if="token && isLoggedIn" class="icon mr-5">
+							<i class="fa fa-user-circle fa-lg" />
+						</a>
+						<a v-if="!isLoggedIn || !token" class="icon mr-5" @click="showLoginDrawer">
+							<i class="fa fa-user-circle fa-lg" />
+						</a>
+						<a class="icon" @click="showCartDrawer">
+							<i class="fa fa-shopping-bag fa-lg" />
+							<span class="has-background-warning cart-counter">{{ count }}</span>
+						</a>
 					</div>
 				</div>
 			</div>
-			<div v-else-if="token && isLoggedIn">
-				loggedIn
-			</div>
 		</div>
+
+		<Cart :visible="isCartVisible" @close="closeAllDrawer" />
+		<Login :visible="isLoginVisible" @close="closeAllDrawer" @show-sign-up-drawer="showRegisterDrawer" />
+		<SignUp :visible="isRegisterVisible" @close="closeAllDrawer" @show-login-drawer="showLoginDrawer" />
 	</nav>
 </template>
 
 <script>
 	import {mapState} from 'vuex';
+	import Cart from '@/components/cart/Cart';
+	import Login from '@/components/user/Login';
+	import SignUp from '@/components/user/SignUp';
 	export default {
 		name: 'Header',
+		components: {SignUp, Login, Cart},
 		data: () => {
 			return {
 				showNav: false,
+				isCartVisible: false,
+				isLoginVisible: false,
+				isRegisterVisible: false
 			};
 		},
-		computed: {
-			...mapState([
-				'token',
-				'isLoggedIn'
-			])
+        computed: {
+            ...mapState([
+                'count',
+                'token',
+                'isLoggedIn'
+            ])
+        },
+		methods:{
+			showCartDrawer() {
+				this.isCartVisible = true;
+			},
+			showLoginDrawer() {
+				this.isLoginVisible = true;
+			},
+			showRegisterDrawer() {
+				this.isRegisterVisible = true;
+			},
+			closeAllDrawer() {
+				this.isCartVisible = false;
+				this.isLoginVisible = false;
+				this.isRegisterVisible = false;
+			}
 		}
 	};
 </script>

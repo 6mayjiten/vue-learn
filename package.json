@@ -3,23 +3,23 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
+        "pro": "serve -s dist",
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.14.0",
+        "ant-design-vue": "^1.6.4",
         "axios": "^0.18.0",
         "bulma": "^0.9.0",
         "core-js": "^3.6.5",
-        "es6-promise": "^4.2.8",
-        "lodash": "^4.17.19",
         "node-sass": "^4.14.1",
         "sass-loader": "^9.0.2",
         "vee-validate": "^3.3.7",
         "vue": "^2.6.11",
         "vue-router": "^3.3.4",
         "vue-server-renderer": "^2.6.11",
-        "vuetify": "^2.3.4",
         "vuex": "^3.5.1",
         "vuex-persistedstate": "^3.0.1",
         "vuex-router-sync": "^5.0.0"
@@ -31,7 +31,8 @@
         "babel-eslint": "^10.1.0",
         "eslint": "^7.5.0",
         "eslint-plugin-vue": "^6.2.2",
-        "vue-template-compiler": "^2.6.11"
+        "vue-template-compiler": "^2.6.11",
+        "babel-plugin-transform-remove-console": "^6.9.4"
     },
     "eslintConfig": {
         "root": true,
@@ -46,26 +47,44 @@
             "parser": "babel-eslint"
         },
         "rules": {
-            "quotes": ["error","single"],
-            "object-property-newline": ["error", { "allowAllPropertiesOnSameLine": true }],
-            "vue/html-indent": ["error", "tab", {
-                "attribute": 1,
-                "baseIndent": 1,
-                "closeBracket": 0,
-                "alignAttributesVertically": true,
-                "ignores": []
-            }],
-            "vue/html-closing-bracket-newline": ["error", {
-                "singleline": "never",
-                "multiline": "never"
-            }],
-            "vue/max-attributes-per-line": ["error", {
-                "singleline": 5,
-                "multiline": {
-                    "max": 5,
-                    "allowFirstLine": true
+            "quotes": [
+                "error",
+                "single"
+            ],
+            "object-property-newline": [
+                "error",
+                {
+                    "allowAllPropertiesOnSameLine": true
                 }
-            }]
+            ],
+            "vue/html-indent": [
+                "error",
+                "tab",
+                {
+                    "attribute": 1,
+                    "baseIndent": 1,
+                    "closeBracket": 0,
+                    "alignAttributesVertically": true,
+                    "ignores": []
+                }
+            ],
+            "vue/html-closing-bracket-newline": [
+                "error",
+                {
+                    "singleline": "never",
+                    "multiline": "never"
+                }
+            ],
+            "vue/max-attributes-per-line": [
+                "error",
+                {
+                    "singleline": 5,
+                    "multiline": {
+                        "max": 5,
+                        "allowFirstLine": true
+                    }
+                }
+            ]
         }
     },
     "browserslist": [

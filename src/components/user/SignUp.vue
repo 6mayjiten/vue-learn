@@ -61,14 +61,17 @@
 			<a-form-item label="Confirm Password" class="has-text-left">
 				<a-input
 					v-decorator="[
-						'confirm password',
-						{ rules: [{ required: true, message: 'Please input Confirm Password!' }] },
+						'confirm_password',
+						{ rules: [
+							{ required: true, message: 'Please input Confirm Password!' },
+						]},
 					]"
-					type="password"
+					placeholder="Confirm Password"
 					style="width: 100%"
-					placeholder="Confirm Password">
+					type="password">
 					<a-icon slot="prefix" type="lock" style="color: rgba(0,0,0,.25)" />
 				</a-input>
+				<span v-if="passwordMatchErr" class="has-text-danger"> Password and Confirm Password did not match!</span>
 			</a-form-item>
 			<a-form-item class="mt-3">
 				<div class="field is-grouped is-grouped-centered">
@@ -95,6 +98,7 @@
         },
 		data: () => {
 			return{
+                passwordMatchErr: false,
 			}
 		},
         beforeCreate() {
@@ -108,9 +112,14 @@
 				this.onClose();this.$emit('show-login-drawer');
 			},
 			handleSubmit(e) {
+                this.passwordMatchErr = false;
                 e.preventDefault();
                 this.form.validateFields((err, values) => {
                     if (!err) {
+                        if(values.confirm_password !== values.password){
+                            this.passwordMatchErr = true;
+                            return;
+                        }
                         console.log('Received values of form: ', values);
                     }
                 });

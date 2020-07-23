@@ -1,17 +1,20 @@
 <template>
 	<div id="app">
+		<Hero />
 		<img alt="Vue logo" src="../../assets/logo.png">
-		<HelloWorld msg="This is message" />
+		<HelloWorld />
 	</div>
 </template>
 
 <script>
-import HelloWorld from '@/components/home/HelloWorld';
-export default {
-	components: {
-		HelloWorld,
+	import HelloWorld from '@/components/home/HelloWorld';
+	import Hero from '@/components/home/Hero';
+	export default {
+		components: {
+			Hero,
+			HelloWorld,
+		}
 	}
-}
 </script>
 
 <style>
@@ -20,7 +23,5 @@ export default {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
     }
 </style>

@@ -3,7 +3,6 @@
 // Import a Google Font
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
-@import "~ant-design-vue/dist/antd.min.css";
 
 body{
     -webkit-font-smoothing: antialiased;
@@ -41,7 +40,51 @@ $navbar-item-active-color: $pink;
 $navbar-item-focus-color: $pink;
 $navbar-item-color: $black;
 
-@import "~bulma/bulma.sass";
+// loader css
+
+.ant-spin-lg .ant-spin-dot {
+    font-size: 60px !important;
+}
+.ant-spin-nested-loading > div > .ant-spin{
+    z-index: 1001 !important;
+}
+.spin-content {
+    border: 1px solid #91d5ff;
+    background-color: #e6f7ff;
+    padding: 30px;
+}
+
+// notification css
+
+.error-notification {
+    .ant-notification-notice-message {
+        font-weight: 600;
+        font-size: 20px !important;
+        color: #f5222d;
+    }
+    .ant-notification-notice-description{
+        font-weight: 600;
+        color: #000000;
+    }
+    .ant-notification-notice-close{
+        color: #000000;
+    }
+}
+
+.success-notification {
+    .ant-notification-notice-message {
+        font-weight: 600;
+        font-size: 20px !important;
+        color: #52c41a;
+    }
+    .ant-notification-notice-description{
+        font-weight: 600;
+        color: #000000;
+    }
+    .ant-notification-notice-close{
+        color: #000000;
+    }
+}
 
 // for fonts scss
 .icon {
@@ -52,8 +95,6 @@ $navbar-item-color: $black;
         }
     }
 }
-
-// cutom scss
 
 .icon {
     .fa {
@@ -82,20 +123,16 @@ $navbar-item-color: $black;
     }
 }
 
-.cart-counter {
-    padding: 0 5px;
-    height: 20px;
-    border-radius: 50%;
-    color: #000000;
-    position: absolute;
-    top: 0px;
-    left: 85%;
-    transform: translate(0%, -50%);
-    font-size: 13px;
-    font-weight: bold;
+.ant-badge{
+    cursor: pointer;
+    .fa-lg{
+        font-size: 2em;
+    }
 }
-
-
+.forget-icon {
+    color: white !important;
+    background: #caca3f !important;
+}
 // login form css
 
 .ant-form-item-children .field .control button{
@@ -105,3 +142,7 @@ $navbar-item-color: $black;
 .ant-drawer-header .ant-drawer-title{
     font-size: 1.8rem;
 }
+
+
+@import "~ant-design-vue/dist/antd.min.css";
+@import "~bulma/bulma.sass";

@@ -1,21 +1,16 @@
 /*
 Error: File to import not found or unreadable: ~bulma/bulma.sass.
-        on line 44 of main.scss
+        on line 148 of main.scss
 
-39: // link styles
-40: $navbar-item-active-color: $pink;
-41: $navbar-item-focus-color: $pink;
-42: $navbar-item-color: $black;
-43: 
-44: @import "~bulma/bulma.sass";
-45: 
-46: // for fonts scss
-47: .icon {
-48:     .fa {
-49:         color: $black;
+143:     font-size: 1.8rem;
+144: }
+145: 
+146: 
+147: @import "~ant-design-vue/dist/antd.min.css";
+148: @import "~bulma/bulma.sass";
 
 Backtrace:
-main.scss:44
+main.scss:148
 /Users/jitenshahi/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/import_node.rb:67:in `rescue in import'
 /Users/jitenshahi/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/import_node.rb:44:in `import'
 /Users/jitenshahi/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/import_node.rb:28:in `imported_file'
@@ -53,4 +48,4 @@ main.scss:44
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: ~bulma/bulma.sass.\A         on line 44 of main.scss\A \A 39: // link styles\A 40: $navbar-item-active-color: $pink;\A 41: $navbar-item-focus-color: $pink;\A 42: $navbar-item-color: $black;\A 43: \A 44: @import \"~bulma/bulma.sass\";\A 45: \A 46: // for fonts scss\A 47: .icon {\A 48:     .fa {\A 49:         color: $black;"; }
+  content: "Error: File to import not found or unreadable: ~bulma/bulma.sass.\A         on line 148 of main.scss\A \A 143:     font-size: 1.8rem;\A 144: }\A 145: \A 146: \A 147: @import \"~ant-design-vue/dist/antd.min.css\";\A 148: @import \"~bulma/bulma.sass\";"; }

@@ -30,16 +30,17 @@
 			<div class="navbar-end mr-6">
 				<div class="navbar-item">
 					<div class="container">
-						<a v-if="token && isLoggedIn" class="icon mr-5">
+						<a-badge v-if="token && isLoggedIn" class="mr-5">
 							<i class="fa fa-user-circle fa-lg" />
-						</a>
-						<a v-if="!isLoggedIn || !token" class="icon mr-5" @click="showLoginDrawer">
+						</a-badge>
+
+						<a-badge v-if="!isLoggedIn || !token" class="mr-5" @click="showLoginDrawer">
 							<i class="fa fa-user-circle fa-lg" />
-						</a>
-						<a class="icon" @click="showCartDrawer">
+						</a-badge>
+
+						<a-badge :count="count" :show-zero="true" @click="showCartDrawer">
 							<i class="fa fa-shopping-bag fa-lg" />
-							<span class="has-background-warning cart-counter">{{ count }}</span>
-						</a>
+						</a-badge>
 					</div>
 				</div>
 			</div>

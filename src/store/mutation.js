@@ -1,20 +1,28 @@
 export const state = {
-	count: 0,
+	isLoading: false,
+	isSpinning: false,
 	token: null,
-	isLoggedIn: false
+	isLoggedIn: false,
+	cart: [],
 };
 
 export const getters = {
-	doneCount: (state) => {
-		return state.count;
-	}
+
 };
 
 export const mutations = {
-	SET_INCREMENT: (state) => {
-		state.count +=1
+	SET_LOADER: (state, payload) => {
+		state.isLoading = payload;
 	},
-	SET_DECREMENT: (state) => {
-		state.count -= 1
-	}
+	SET_SPINNER: (state, payload) => {
+		state.isSpinning = payload;
+	},
+	SET_LOGIN: (state, payload) => {
+		state.token = payload.token,
+		state.isLoggedIn = payload.auth
+	},
+	SET_LOGOUT: (state) => {
+		state.token = null,
+		state.isLoggedIn = false
+	},
 };

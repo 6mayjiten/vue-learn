@@ -1,8 +1,8 @@
 <template>
 	<a-drawer title="Register" class="has-text-centered" :width="420" :visible="visible"
-		:body-style="{ paddingBottom: '80px' }" @close="onClose">
+		:body-style="{ paddingBottom: '80px' }" :destroy-on-close="true" @close="onClose">
 		<a-spin :spinning="isSpinning" size="large">
-			<a-avatar :size="150" icon="user-add" class="mb-5" />
+			<a-avatar :size="150" icon="user-add" class="mb-5 has-text-black" />
 			<a-form :form="form" class="login-form" @submit="handleSubmit">
 				<a-row :gutter="10">
 					<a-col :span="12">

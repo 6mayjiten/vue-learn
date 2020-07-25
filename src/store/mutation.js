@@ -1,10 +1,15 @@
-export const state = {
-	isLoading: false,
-	isSpinning: false,
-	token: null,
-	isLoggedIn: false,
-	cart: [],
+const getDefaultState = () => {
+	return {
+		isLoading: false,
+		isSpinning: false,
+		token: null,
+		isLoggedIn: false,
+		cart: [],
+		user: {},
+	}
 };
+
+export const state = getDefaultState();
 
 export const getters = {
 
@@ -19,10 +24,10 @@ export const mutations = {
 	},
 	SET_LOGIN: (state, payload) => {
 		state.token = payload.token,
-		state.isLoggedIn = payload.auth
+		state.isLoggedIn = payload.auth,
+		state.user = payload.user
 	},
 	SET_LOGOUT: (state) => {
-		state.token = null,
-		state.isLoggedIn = false
+		Object.assign(state, getDefaultState());
 	},
 };

@@ -40,6 +40,12 @@ $navbar-item-active-color: $pink;
 $navbar-item-focus-color: $pink;
 $navbar-item-color: $black;
 
+// ant design changes
+
+.ant-divider-horizontal{
+    margin: 10px 0 !important;
+}
+
 // loader css
 
 .ant-spin-lg .ant-spin-dot {
@@ -84,6 +90,11 @@ $navbar-item-color: $black;
     .ant-notification-notice-close{
         color: #000000;
     }
+}
+
+// fa css
+.fa-lg {
+    color: #000000;
 }
 
 // for fonts scss
@@ -133,6 +144,20 @@ $navbar-item-color: $black;
     color: white !important;
     background: #caca3f !important;
 }
+
+.user-data-dropdown {
+    > .ant-dropdown-menu-item {
+        color: #000000;
+        font-size: 16px;
+        font-weight: 500;
+        i.anticon {
+            font-size: 16px;
+        }
+    }
+    > .ant-dropdown-menu-item:first-child {
+        font-weight: 700;
+    }
+}
 // login form css
 
 .ant-form-item-children .field .control button{
@@ -146,3 +171,9 @@ $navbar-item-color: $black;
 
 @import "~ant-design-vue/dist/antd.min.css";
 @import "~bulma/bulma.sass";
+
+// footer
+.footer{
+    background-color: #fafafa;
+    padding: 5.2rem 1.5rem 3rem;
+}

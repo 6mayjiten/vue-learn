@@ -1,8 +1,8 @@
 <template>
 	<a-drawer title="Login" class="has-text-centered" :width="420" :visible="visible"
-		:body-style="{ paddingBottom: '80px' }" @close="onClose">
+		:body-style="{ paddingBottom: '80px' }" :destroy-on-close="true" @close="onClose">
 		<a-spin :spinning="isSpinning" size="large">
-			<a-avatar :size="150" icon="user" class="mb-5" />
+			<a-avatar :size="150" icon="user" class="mb-5 has-text-black" />
 			<a-form
 				:form="form"
 				class="login-form"
@@ -96,14 +96,15 @@
             onForgetPasswordClose(){
                 this.isForgetPasswordVisible = false;
             },
-			handleSubmit(e) {
-				e.preventDefault();
+			handleSubmit(event) {
+                event.preventDefault();
 				this.form.validateFields((err, values) => {
 					if (!err) {
 						this.login(values).then( () => {
 							this.openNotification('success', 'Success','Account loggedIn successfully.');
-						}).catch((e) => {
-                            this.openNotification('error', 'Error',e);
+							this.onClose();
+						}).catch((err) => {
+                            this.openNotification('error', 'Error',err);
 						});
 					}
 				});

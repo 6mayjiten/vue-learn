@@ -1,9 +1,9 @@
 <template>
 	<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
 		<div class="navbar-brand">
-			<a class="navbar-item" href="/">
+			<router-link class="navbar-item" to="/">
 				<img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-			</a>
+			</router-link>
 
 			<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"
 				@click="showNav = !showNav">
@@ -31,14 +31,33 @@
 				<div class="navbar-item">
 					<div class="container">
 						<a-badge v-if="token && isLoggedIn" class="mr-5">
-							<i class="fa fa-user-circle fa-lg" />
+							<a-dropdown>
+								<a class="ant-dropdown-link" @click.prevent="">
+									<i class="fa fa-user-circle fa-lg" />
+								</a>
+								<a-menu slot="overlay" class="mt-3 user-data-dropdown">
+									<a-menu-item key="0">
+										Hi, {{ user.first_name }} {{ user.last_name }}
+									</a-menu-item>
+									<a-menu-item key="1">
+										<a-icon type="form" />Edit Profile
+									</a-menu-item>
+									<a-menu-item key="2">
+										<a-icon type="code-sandbox" />My Order
+									</a-menu-item>
+									<a-divider />
+									<a-menu-item key="2" @click="logoutUser">
+										<a-icon type="poweroff" /> Logout
+									</a-menu-item>
+								</a-menu>
+							</a-dropdown>
 						</a-badge>
 
 						<a-badge v-if="!isLoggedIn || !token" class="mr-5" @click="showLoginDrawer">
 							<i class="fa fa-user-circle fa-lg" />
 						</a-badge>
 
-						<a-badge :count="count" :show-zero="true" @click="showCartDrawer">
+						<a-badge :count="cart.length" :show-zero="true" @click="showCartDrawer">
 							<i class="fa fa-shopping-bag fa-lg" />
 						</a-badge>
 					</div>
@@ -53,7 +72,7 @@
 </template>
 
 <script>
-	import {mapState} from 'vuex';
+	import {mapState, mapActions } from 'vuex';
 	import Cart from '@/components/cart/Cart';
 	import Login from '@/components/user/Login';
 	import SignUp from '@/components/user/SignUp';
@@ -70,12 +89,16 @@
 		},
         computed: {
             ...mapState([
-                'count',
                 'token',
-                'isLoggedIn'
+                'isLoggedIn',
+				'cart',
+				'user'
             ])
         },
 		methods:{
+			...mapActions([
+				'logout'
+			]),
 			showCartDrawer() {
 				this.isCartVisible = true;
 			},
@@ -89,7 +112,17 @@
 				this.isCartVisible = false;
 				this.isLoginVisible = false;
 				this.isRegisterVisible = false;
-			}
+			},
+			logoutUser() {
+				this.logout().then(()=>{
+                    this.$notification['success']({
+                        message: 'Success',
+                        description: 'Logged Out Successfully',
+                        duration: 3.5,
+                        class: 'success-notification'
+                    });
+				});
+			},
 		}
 	};
 </script>

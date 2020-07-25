@@ -1,6 +1,6 @@
 <template>
 	<a-drawer title="Forgot Password" class="has-text-centered" width="420" :visible="visible"
-		:body-style="{ paddingBottom: '80px' }" @close="onClose">
+		:body-style="{ paddingBottom: '80px' }" :destroy-on-close="true" @close="onClose">
 		<a-avatar :size="150" icon="question" class="mb-5 forget-icon" />
 		<a-spin :spinning="isSpinning" size="large">
 			<a-form :form="form" class="login-form" @submit="handleSubmit">

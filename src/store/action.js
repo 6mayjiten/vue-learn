@@ -52,7 +52,14 @@ export const actions = {
 	},
 
 	logout: ({ commit }) => {
-		commit('SET_LOGOUT');
+		commit('SET_LOADER', true);
+		return new Promise((resolve) => {
+			setTimeout(() => {
+				commit('SET_LOADER', false);
+				commit('SET_LOGOUT');
+				resolve();
+			}, 2000);
+		});
 	},
 
 };

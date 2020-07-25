@@ -1,16 +1,21 @@
 /*
 Error: File to import not found or unreadable: ~bulma/bulma.sass.
-        on line 148 of main.scss
+        on line 173 of main.scss
 
-143:     font-size: 1.8rem;
-144: }
-145: 
-146: 
-147: @import "~ant-design-vue/dist/antd.min.css";
-148: @import "~bulma/bulma.sass";
+168:     font-size: 1.8rem;
+169: }
+170: 
+171: 
+172: @import "~ant-design-vue/dist/antd.min.css";
+173: @import "~bulma/bulma.sass";
+174: 
+175: // footer
+176: .footer{
+177:     background-color: #fafafa;
+178:     padding: 5.2rem 1.5rem 3rem;
 
 Backtrace:
-main.scss:148
+main.scss:173
 /Users/jitenshahi/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/import_node.rb:67:in `rescue in import'
 /Users/jitenshahi/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/import_node.rb:44:in `import'
 /Users/jitenshahi/.rbenv/versions/2.7.1/lib/ruby/gems/2.7.0/gems/sass-3.7.4/lib/sass/tree/import_node.rb:28:in `imported_file'
@@ -48,4 +53,4 @@ main.scss:148
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: ~bulma/bulma.sass.\A         on line 148 of main.scss\A \A 143:     font-size: 1.8rem;\A 144: }\A 145: \A 146: \A 147: @import \"~ant-design-vue/dist/antd.min.css\";\A 148: @import \"~bulma/bulma.sass\";"; }
+  content: "Error: File to import not found or unreadable: ~bulma/bulma.sass.\A         on line 173 of main.scss\A \A 168:     font-size: 1.8rem;\A 169: }\A 170: \A 171: \A 172: @import \"~ant-design-vue/dist/antd.min.css\";\A 173: @import \"~bulma/bulma.sass\";\A 174: \A 175: // footer\A 176: .footer{\A 177:     background-color: #fafafa;\A 178:     padding: 5.2rem 1.5rem 3rem;"; }

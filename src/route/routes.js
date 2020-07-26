@@ -1,6 +1,6 @@
 import Home from '@/components/home/Index';
-import Product from '@/components/product/Index';
-import Collection from '@/components/collection/Index';
+import Product from '@/components/product/Product';
+import Collection from '@/components/collection/Collection';
 import NotFound from '@/components/common/NotFound';
 
 export default [

@@ -39,10 +39,13 @@
 									<a-menu-item key="0">
 										Hi, {{ user.first_name }} {{ user.last_name }}
 									</a-menu-item>
-									<a-menu-item key="1">
+									<a-menu-item key="1" @click="showUpdateProfile">
 										<a-icon type="form" />Edit Profile
 									</a-menu-item>
-									<a-menu-item key="2">
+									<a-menu-item key="2" @click="showAddress">
+										<a-icon type="home" />My Addresses
+									</a-menu-item>
+									<a-menu-item key="3">
 										<a-icon type="code-sandbox" />My Order
 									</a-menu-item>
 									<a-divider />
@@ -64,10 +67,15 @@
 				</div>
 			</div>
 		</div>
-
 		<Cart :visible="isCartVisible" @close="closeAllDrawer" />
-		<Login :visible="isLoginVisible" @close="closeAllDrawer" @show-sign-up-drawer="showRegisterDrawer" />
-		<SignUp :visible="isRegisterVisible" @close="closeAllDrawer" @show-login-drawer="showLoginDrawer" />
+		<div v-if="!isLoggedIn || !token">
+			<Login :visible="isLoginVisible" @close="closeAllDrawer" @show-sign-up-drawer="showRegisterDrawer" />
+			<SignUp :visible="isRegisterVisible" @close="closeAllDrawer" @show-login-drawer="showLoginDrawer" />
+		</div>
+		<div v-if="isLoggedIn && token">
+			<UserProfile :visible="isUpdateProfileVisible" @close="closeAllDrawer" />
+			<UserAddress :visible="isAddressVisible" @close="closeAllDrawer" />
+		</div>
 	</nav>
 </template>
 
@@ -76,15 +84,25 @@
 	import Cart from '@/components/cart/Cart';
 	import Login from '@/components/user/Login';
 	import SignUp from '@/components/user/SignUp';
+    import UserProfile from '@/components/profile/UserProfile';
+    import UserAddress from '@/components/profile/UserAddress';
 	export default {
 		name: 'Header',
-		components: {SignUp, Login, Cart},
+		components: {
+            UserAddress,
+            UserProfile,
+            SignUp,
+			Login,
+			Cart
+		},
 		data: () => {
 			return {
 				showNav: false,
 				isCartVisible: false,
 				isLoginVisible: false,
-				isRegisterVisible: false
+				isRegisterVisible: false,
+                isUpdateProfileVisible: false,
+				isAddressVisible: false,
 			};
 		},
         computed: {
@@ -108,10 +126,18 @@
 			showRegisterDrawer() {
 				this.isRegisterVisible = true;
 			},
+            showUpdateProfile(){
+				this.isUpdateProfileVisible = true;
+			},
+            showAddress(){
+                this.isAddressVisible = true;
+            },
 			closeAllDrawer() {
 				this.isCartVisible = false;
 				this.isLoginVisible = false;
 				this.isRegisterVisible = false;
+				this.isUpdateProfileVisible = false;
+				this.isAddressVisible = false;
 			},
 			logoutUser() {
 				this.logout().then(()=>{

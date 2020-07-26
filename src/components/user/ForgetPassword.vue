@@ -66,8 +66,8 @@
                             if(res){
                                 this.openNotification('success', 'Success',res);
                             }
-                        }).catch((e) => {
-                            this.openNotification('error', 'Error',e);
+                        }).catch((err) => {
+                            this.openNotification('error', 'Error',err);
                         });
                     }
                 });

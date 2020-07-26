@@ -6,13 +6,17 @@ const getDefaultState = () => {
 		isLoggedIn: false,
 		cart: [],
 		user: {},
+		orders: [],
+		addresses: [],
 	}
 };
 
 export const state = getDefaultState();
 
 export const getters = {
-
+	getToken(state){
+		return state.token;
+	}
 };
 
 export const mutations = {
@@ -26,6 +30,12 @@ export const mutations = {
 		state.token = payload.token,
 		state.isLoggedIn = payload.auth,
 		state.user = payload.user
+	},
+	SET_USER: (state, payload) => {
+		state.user = payload.user
+	},
+	SET_ADDRESS: (state, payload) => {
+		state.addresses.push(payload.address);
 	},
 	SET_LOGOUT: (state) => {
 		Object.assign(state, getDefaultState());

@@ -1,7 +1,7 @@
 <template>
 	<a-drawer title="Register" class="has-text-centered" :width="420" :visible="visible"
 		:body-style="{ paddingBottom: '80px' }" :destroy-on-close="true" @close="onClose">
-		<a-spin :spinning="isSpinning" size="large">
+		<a-spin size="large">
 			<a-avatar :size="150" icon="user-add" class="mb-5 has-text-black" />
 			<a-form :form="form" class="login-form" @submit="handleSubmit">
 				<a-row :gutter="10">
@@ -113,8 +113,7 @@
 	</a-drawer>
 </template>
 <script>
-    import { mapActions } from 'vuex';
-    import { mapState } from 'vuex';
+    import { mapState, mapActions } from 'vuex';
 
     export default {
         name: 'SignUp',
@@ -154,9 +153,7 @@
                             return;
                         }
                         this.signup(values).then( (res) => {
-                            if(res){
-                                this.openNotification('success', 'Success',res);
-                            }
+                            this.openNotification('success', 'Success',res);
                         }).catch((e) => {
                             this.openNotification('error', 'Error',e);
                         });

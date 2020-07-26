@@ -49,7 +49,7 @@ export const actions = {
 		setTimeout(()=>{
 			console.log(data);
 			commit('SET_SPINNER', false);
-		}, 1000)
+		}, 1000);
 	},
 
 	updateUserProfile: ({ commit, getters }, data) => {
@@ -77,7 +77,13 @@ export const actions = {
 		})
 	},
 
-	addAddress: ( { commit, getters }, data) => {
+	getUserAddress: ({ commit, getters }) => {
+		commit('SET_SPINNER', true);
+		headers['x-access-token'] = getters.getToken;
+		getUserAddressHelper(headers, commit);
+	},
+
+	addAddress: ({ commit, getters }, data) => {
 		commit('SET_SPINNER', true);
 		headers['x-access-token'] = getters.getToken;
 		return new Promise((resolve, reject) => {
@@ -87,7 +93,7 @@ export const actions = {
 					if (data.error) {
 						return reject(data.message);
 					}else {
-						commit('SET_ADDRESS', data.message);
+						getUserAddressHelper(headers, commit);
 						resolve(null);
 					}
 				})
@@ -102,6 +108,55 @@ export const actions = {
 		})
 	},
 
+	updateAddress: ({ commit, getters}, data ) => {
+		commit('SET_SPINNER', true);
+		headers['x-access-token'] = getters.getToken;
+		return new Promise((resolve, reject) => {
+			axios.post(`${url}/user/address/update`, {address: data },{headers})
+				.then(res => {
+					const data = res.data;
+					if (data.error) {
+						return reject(data.message);
+					}else {
+						getUserAddressHelper(headers, commit);
+						resolve(null);
+					}
+				})
+				.catch(() => {
+					reject('Something went wrong');
+				})
+				.finally(()=>{
+					setTimeout(()=>{
+						commit('SET_SPINNER', false);
+					}, 1000)
+				});
+		});
+	},
+
+	deleteAddress: ( { commit, getters }, addressId ) => {
+		commit('SET_SPINNER', true);
+		headers['x-access-token'] = getters.getToken;
+		return new Promise((resolve, reject) => {
+			axios.delete(`${url}/user/address/${addressId}`, {headers}).then(res => {
+					const data = res.data;
+					if (data.error) {
+						return reject(data.message);
+					}else {
+						getUserAddressHelper(headers, commit);
+						resolve(null);
+					}
+				})
+				.catch(() => {
+					reject('Something went wrong');
+				})
+				.finally(()=>{
+					setTimeout(()=>{
+						commit('SET_SPINNER', false);
+					}, 1000)
+				});
+		});
+	},
+
 	logout: ({ commit }) => {
 		commit('SET_LOADER', true);
 		return new Promise((resolve) => {
@@ -114,3 +169,26 @@ export const actions = {
 	},
 
 };
+
+const getUserAddressHelper = (headers, commit) => {
+	return new Promise((resolve, reject) => {
+		axios.get(`${url}/user/address`,{headers})
+			.then(res => {
+				const data = res.data;
+				if (data.error) {
+					return reject(data.message);
+				}else {
+					commit('SET_USER_ADDRESS', data.message);
+					resolve(null);
+				}
+			})
+			.catch(() => {
+				reject('Something went wrong');
+			})
+			.finally(()=>{
+				setTimeout(()=>{
+					commit('SET_SPINNER', false);
+				}, 1000)
+			});
+	})
+}

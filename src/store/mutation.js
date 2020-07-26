@@ -34,8 +34,8 @@ export const mutations = {
 	SET_USER: (state, payload) => {
 		state.user = payload.user
 	},
-	SET_ADDRESS: (state, payload) => {
-		state.addresses.push(payload.address);
+	SET_USER_ADDRESS: (state, payload) => {
+		state.addresses = payload.address
 	},
 	SET_LOGOUT: (state) => {
 		Object.assign(state, getDefaultState());

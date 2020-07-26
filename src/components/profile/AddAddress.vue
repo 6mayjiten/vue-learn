@@ -53,34 +53,37 @@
 
 <script>
     import { mapActions, mapState } from 'vuex';
-
+	let initialState = () => {
+		return {
+            rules: {
+                street_name:[{ required: true, message: 'Please enter street name!' }],
+                city: [{ required: true, message: 'Please enter city name!' }],
+                province: [{ required: true, message: 'Please enter province name!' }],
+                country: [{ required: true, message: 'Please enter country name!' }],
+                postal_code: [{ required: true, message: 'Please enter postal code!' },
+                    { len:6, message: 'Please input valid postal code!' }],
+                mobile_number: [{ len:10, message: 'Please input valid mobile number!' }]
+            },
+            addressInfo: {
+                street_number: '',
+                street_name: '',
+                city: '',
+                province: '',
+                country: '',
+                postal_code: '',
+                mobile_number: ''
+            },
+            addressId: null,
+            title: 'Add Address'
+        }
+    }
     export default {
         name: 'AddAddress',
         props: {
             visible: Boolean,
-			addressId: {type: String, default: null}
         },
-        data() {
-            return{
-                rules: {
-                    street_name:[{ required: true, message: 'Please enter street name!' }],
-                    city: [{ required: true, message: 'Please enter city name!' }],
-                    province: [{ required: true, message: 'Please enter province name!' }],
-					country: [{ required: true, message: 'Please enter country name!' }],
-                    postal_code: [{ required: true, message: 'Please enter postal code!' },
-                        { len:6, message: 'Please input valid postal code!' }],
-					mobile_number: [{ len:10, message: 'Please input valid mobile number!' }]
-                },
-                addressInfo: {
-                        street_number: '',
-                        street_name: '',
-                        city: '',
-                        province: '',
-                        country: '',
-                        postal_code: '',
-                        mobile_number: ''
-                },
-            }
+        data () {
+            return initialState();
         },
         computed: {
             ...mapState([
@@ -88,21 +91,21 @@
                 'addresses'
             ]),
         },
-		created() {
-			if(this.addressId) {
-				const address = this.addresses.filter(add => add._id === this.addressId);
-				this.addressInfo = {...address};
-			}
-		},
         methods: {
             ...mapActions([
                 'addAddress','updateAddress'
             ]),
-			title() {
-                return this.addressId?'Update Address':'Add Address'
+			setAddress(addressId){
+                if(addressId) {
+                    this.addressId = addressId;
+                    this.title = 'Update Address';
+                    const address = this.addresses.filter(add => add._id.toString() === addressId.toString());
+                    this.addressInfo = {...address[0]};
+                }
 			},
             onClose() {
                 this.$refs.addressForm.resetFields();
+                Object.assign(this.$data, initialState());
                 this.$emit('close-update-address');
             },
             handleSubmit(e) {
@@ -112,6 +115,7 @@
                         if(this.addressId){
                             this.updateAddress(this.addressInfo).then(() => {
                                 this.openNotification('success', 'Success', 'Address Updated Successfully!');
+                                this.onClose();
                             }).catch((err) => {
                                 this.openNotification('error', 'Error',err);
                             });
